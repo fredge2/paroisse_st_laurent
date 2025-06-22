@@ -1,86 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Évangiles & Homélies - Paroisse St Laurent</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="images/croix_chretienne.jpg" type="image/jpeg">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="images/croix_chretienne.jpg" type="image/jpeg" />
+  </head>
+  <body>
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="images/croix_chretienne.jpg" alt="Croix chrétienne">
-                <h1>Paroisse St Laurent</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="evangiles.html" class="active">Évangiles & Homélies</a></li>
-                    <li><a href="admin/index.html">Administration</a></li>
-                </ul>
-            </nav>
+      <div class="header-content">
+        <div class="logo">
+          <img src="images/croix_chretienne.jpg" alt="Croix chrétienne" />
+          <h1>Paroisse St Laurent</h1>
         </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+              <a href="evangiles.html" class="active">Évangiles & Homélies</a>
+            </li>
+            <li><a href="admin/index.html">Administration</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h2>Évangiles & Homélies</h2>
-                <p>Découvrez les textes sacrés et les réflexions spirituelles partagées lors de nos célébrations. Chaque document vous invite à approfondir votre foi et à méditer sur la Parole de Dieu.</p>
-            </div>
-        </section>
-
-        <div class="random-image-container">
-            <img id="randomImage" src="images/jesus_christ.jpg" alt="Image spirituelle" class="random-image">
-            <p><em>Méditation du jour</em></p>
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Évangiles & Homélies</h2>
+          <p>
+            Découvrez les textes sacrés et les réflexions spirituelles partagées
+            lors de nos célébrations. Chaque document vous invite à approfondir
+            votre foi et à méditer sur la Parole de Dieu.
+          </p>
         </div>
+      </section>
 
-        <section class="card">
-            <h3>Fichiers Disponibles</h3>
-            <p>Cliquez sur un fichier pour le lire dans une présentation enrichie d'images spirituelles.</p>
-            
-            <div class="file-list" id="fileList">
-                <div class="file-item" onclick="viewFile('evangile_dimanche_1.txt')">
-                    <div class="file-info">
-                        <div class="file-icon">📖</div>
-                        <div>
-                            <h4>Évangile du 1er Dimanche de l'Avent</h4>
-                            <p>Texte et réflexion sur l'attente du Seigneur</p>
-                            <small>Ajouté le 1er décembre 2024</small>
-                        </div>
-                    </div>
-                    <button class="btn btn-secondary">Lire</button>
-                </div>
+      <div class="random-image-container">
+        <img
+          id="randomImage"
+          src="images/jesus_christ.jpg"
+          alt="Image spirituelle"
+          class="random-image"
+        />
+        <p><em>Méditation du jour</em></p>
+      </div>
 
-                <div class="file-item" onclick="viewFile('homelie_noel_2024.txt')">
-                    <div class="file-info">
-                        <div class="file-icon">✨</div>
-                        <div>
-                            <h4>Homélie de Noël 2024</h4>
-                            <p>Méditation sur la naissance du Christ</p>
-                            <small>Ajouté le 25 décembre 2024</small>
-                        </div>
-                    </div>
-                    <button class="btn btn-secondary">Lire</button>
-                </div>
+      <section class="card">
+        <h3>Fichiers Disponibles</h3>
+        <p>
+          Cliquez sur un fichier pour le lire dans une présentation enrichie
+          d'images spirituelles.
+        </p>
+
+        <div class="file-list" id="fileList">
+          <div class="file-item" onclick="viewFile('evangile_dimanche_1.txt')">
+            <div class="file-info">
+              <div class="file-icon">📖</div>
+              <div>
+                <h4>Évangile du 1er Dimanche de l'Avent</h4>
+                <p>Texte et réflexion sur l'attente du Seigneur</p>
+                <small>Ajouté le 1er décembre 2024</small>
+              </div>
             </div>
-        </section>
+            <button class="btn btn-secondary">Lire</button>
+          </div>
 
-        <section class="card">
-            <h3>À propos de nos textes</h3>
-            <p>Les évangiles présentés ici suivent le calendrier liturgique de l'Église catholique. Chaque texte est accompagné d'une homélie qui vous aide à comprendre et à vivre la Parole de Dieu dans votre quotidien.</p>
-            <p>Ces documents sont régulièrement mis à jour par notre équipe pastorale. N'hésitez pas à revenir consulter les nouveaux textes ajoutés.</p>
-        </section>
+          <div class="file-item" onclick="viewFile('homelie_noel_2024.txt')">
+            <div class="file-info">
+              <div class="file-icon">✨</div>
+              <div>
+                <h4>Homélie de Noël 2024</h4>
+                <p>Méditation sur la naissance du Christ</p>
+                <small>Ajouté le 25 décembre 2024</small>
+              </div>
+            </div>
+            <button class="btn btn-secondary">Lire</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>À propos de nos textes</h3>
+        <p>
+          Les évangiles présentés ici suivent le calendrier liturgique de
+          l'Église catholique. Chaque texte est accompagné d'une homélie qui
+          vous aide à comprendre et à vivre la Parole de Dieu dans votre
+          quotidien.
+        </p>
+        <p>
+          Ces documents sont régulièrement mis à jour par notre équipe
+          pastorale. N'hésitez pas à revenir consulter les nouveaux textes
+          ajoutés.
+        </p>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Paroisse St Laurent - La Bresse. Tous droits réservés.</p>
-        <p>Site créé avec foi et dévotion pour notre communauté</p>
+      <p>&copy; 2024 Paroisse St Laurent - La Bresse. Tous droits réservés.</p>
+      <p></p>
     </footer>
 
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
-
