@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panneau d'Administration - Paroisse Saint Laurent</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container flex-between">
+            <a href="../index.html" class="logo">Paroisse Saint Laurent</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="../evangiles.html" class="nav-link">Évangiles & Homélies</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link active">Administration</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Panneau d'Administration</h1>
+            <p>Gestion du contenu du site</p>
+        </div>
+    </section>
+
+    <!-- Admin Panel Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Gestion du site</h2>
+            
+            <div class="admin-tabs">
+                <div class="tab-header">
+                    <button class="tab-btn active" data-tab="files">Fichiers</button>
+                    <button class="tab-btn" data-tab="images">Images</button>
+                    <button class="tab-btn" data-tab="pages">Pages</button>
+                    <button class="tab-btn" data-tab="settings">Paramètres</button>
+                </div>
+                
+                <!-- Onglet Fichiers -->
+                <div class="tab-content active" id="files-tab">
+                    <h3>Ajouter un fichier</h3>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <form id="upload-form">
+                                <div class="form-group">
+                                    <label for="file-name" class="form-label">Nom du fichier</label>
+                                    <input type="text" id="file-name" class="form-control" placeholder="Ex: Évangile du 21 juin 2025" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="file-input" class="form-label">Sélectionner un fichier</label>
+                                    <input type="file" id="file-input" class="form-control" accept=".pdf,.txt,.doc,.docx" required>
+                                    <small class="form-text">Formats acceptés : PDF, TXT, DOC, DOCX</small>
+                                </div>
+                                <p id="upload-error-message" class="text-accent" style="display: none;"></p>
+                                <p id="upload-success-message" class="text-success" style="display: none;">Fichier téléchargé avec succès !</p>
+                                <button type="submit" class="btn">Télécharger</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <h3>Fichiers existants</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="file-list">
+                                <li class="file-item">
+                                    <div>
+                                        <span class="file-name">Évangile du 21 juin 2025</span>
+                                        <span class="file-date">21/06/2025</span>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-sm btn-danger">Supprimer</button>
+                                    </div>
+                                </li>
+                                <li class="file-item">
+                                    <div>
+                                        <span class="file-name">Homélie du 21 juin 2025</span>
+                                        <span class="file-date">21/06/2025</span>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-sm btn-danger">Supprimer</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Onglet Images -->
+                <div class="tab-content" id="images-tab">
+                    <h3>Ajouter une image</h3>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <form id="image-upload-form">
+                                <div class="form-group">
+                                    <label for="image-caption" class="form-label">Légende de l'image</label>
+                                    <input type="text" id="image-caption" class="form-control" placeholder="Ex: Jésus enseignant à ses disciples" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image-input" class="form-label">Sélectionner une image</label>
+                                    <input type="file" id="image-input" class="form-control" accept="image/*" required>
+                                    <small class="form-text">Formats acceptés : JPG, PNG, GIF</small>
+                                </div>
+                                <p id="image-error-message" class="text-accent" style="display: none;"></p>
+                                <p id="image-success-message" class="text-success" style="display: none;">Image téléchargée avec succès !</p>
+                                <button type="submit" class="btn">Télécharger</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <h3>Images existantes</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="image-grid">
+                                <div class="image-item">
+                                    <img src="../images/image1.jpg" alt="Image 1">
+                                    <div class="image-caption">Jésus enseignant à ses disciples</div>
+                                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                                </div>
+                                <div class="image-item">
+                                    <img src="../images/image2.jpg" alt="Image 2">
+                                    <div class="image-caption">Bible et bougie</div>
+                                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                                </div>
+                                <div class="image-item">
+                                    <img src="../images/image3.jpg" alt="Image 3">
+                                    <div class="image-caption">Saint Laurent</div>
+                                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Onglet Pages -->
+                <div class="tab-content" id="pages-tab">
+                    <h3>Ajouter une page</h3>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <form id="page-form">
+                                <div class="form-group">
+                                    <label for="page-title" class="form-label">Titre de la page</label>
+                                    <input type="text" id="page-title" class="form-control" placeholder="Ex: Histoire de notre paroisse" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="page-content" class="form-label">Contenu de la page</label>
+                                    <textarea id="page-content" class="form-control" rows="10" placeholder="Saisissez le contenu de votre page ici..." required></textarea>
+                                    <small class="form-text">Vous pouvez utiliser du HTML simple pour la mise en forme</small>
+                                </div>
+                                <p id="page-error-message" class="text-accent" style="display: none;"></p>
+                                <p id="page-success-message" class="text-success" style="display: none;">Page créée avec succès !</p>
+                                <button type="submit" class="btn">Créer la page</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <h3>Pages existantes</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="file-list">
+                                <li class="file-item">
+                                    <div>
+                                        <span class="file-name">Accueil</span>
+                                        <span class="file-date">Page principale</span>
+                                    </div>
+                                    <div class="file-actions">
+                                        <a href="../index.html" class="btn btn-sm" target="_blank">Voir</a>
+                                        <button class="btn btn-sm btn-secondary">Modifier</button>
+                                    </div>
+                                </li>
+                                <li class="file-item">
+                                    <div>
+                                        <span class="file-name">Évangiles & Homélies</span>
+                                        <span class="file-date">Page de fichiers</span>
+                                    </div>
+                                    <div class="file-actions">
+                                        <a href="../evangiles.html" class="btn btn-sm" target="_blank">Voir</a>
+                                        <button class="btn btn-sm btn-secondary">Modifier</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Onglet Paramètres -->
+                <div class="tab-content" id="settings-tab">
+                    <h3>Changer le code administrateur</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="change-code-form">
+                                <div class="form-group">
+                                    <label for="current-code" class="form-label">Code actuel</label>
+                                    <input type="password" id="current-code" class="form-control" placeholder="Entrez le code actuel" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-code" class="form-label">Nouveau code</label>
+                                    <input type="password" id="new-code" class="form-control" placeholder="Entrez le nouveau code" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-code" class="form-label">Confirmer le nouveau code</label>
+                                    <input type="password" id="confirm-code" class="form-control" placeholder="Confirmez le nouveau code" required>
+                                </div>
+                                <p id="code-error-message" class="text-accent" style="display: none;"></p>
+                                <p id="code-success-message" class="text-success" style="display: none;">Code administrateur modifié avec succès !</p>
+                                <button type="submit" class="btn">Modifier le code</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 Paroisse Saint Laurent - La Bresse. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Gestion des onglets
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Désactiver tous les onglets
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Activer l'onglet sélectionné
+                    this.classList.add('active');
+                    document.getElementById(tabId + '-tab').classList.add('active');
+                });
+            });
+        });
+    </script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

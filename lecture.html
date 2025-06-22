@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture - Paroisse St Laurent</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/croix_chretienne.jpg" type="image/jpeg">
+    <style>
+        .reading-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .reading-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+        
+        .reading-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .reading-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .spiritual-image {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        
+        .spiritual-image img {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .spiritual-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .spiritual-image p {
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .reading-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px var(--shadow);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .reading-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 1rem;
+        }
+        
+        .reading-content h3 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+        
+        .reading-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .reading-content .verse {
+            font-style: italic;
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary-color);
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .reading-content .reflection {
+            background: linear-gradient(135deg, #F5F5DC 0%, #E6E6FA 100%);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+        
+        .btn-back {
+            background: var(--accent-color);
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow);
+            filter: brightness(1.1);
+        }
+        
+        .btn-print {
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow);
+            filter: brightness(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .reading-container {
+                padding: 0 1rem;
+            }
+            
+            .reading-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .reading-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .spiritual-image img {
+                height: 200px;
+            }
+        }
+        
+        @media print {
+            .navigation-buttons,
+            header,
+            footer {
+                display: none;
+            }
+            
+            .reading-container {
+                max-width: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .reading-content {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/croix_chretienne.jpg" alt="Croix chrétienne">
+                <h1>Paroisse St Laurent</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="evangiles.html">Évangiles & Homélies</a></li>
+                    <li><a href="admin/index.html">Administration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="reading-container">
+        <div class="navigation-buttons">
+            <a href="evangiles.html" class="btn-back">
+                ← Retour à la liste
+            </a>
+            <button onclick="window.print()" class="btn-print">
+                🖨️ Imprimer
+            </button>
+        </div>
+
+        <div class="reading-header">
+            <h1 id="documentTitle">Chargement...</h1>
+            <p id="documentDescription">Préparation de la lecture...</p>
+        </div>
+
+        <div class="spiritual-image">
+            <img id="spiritualImage" src="images/croix_chretienne.jpg" alt="Image spirituelle">
+            <p>Image spirituelle pour accompagner votre méditation</p>
+        </div>
+
+        <div class="reading-content" id="readingContent">
+            <div style="text-align: center; padding: 3rem;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📖</div>
+                <h2>Chargement du contenu...</h2>
+                <p>Veuillez patienter pendant que nous préparons votre lecture spirituelle.</p>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="evangiles.html" class="btn-back">
+                ← Retour à la liste
+            </a>
+            <button onclick="window.print()" class="btn-print">
+                🖨️ Imprimer
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Paroisse St Laurent - La Bresse. Tous droits réservés.</p>
+        <p>Page de lecture spirituelle</p>
+    </footer>
+
+    <script>
+        // Configuration des images spirituelles
+        const spiritualImages = [
+            'images/croix_chretienne.jpg',
+            'images/jesus_christ.jpg',
+            'images/eglise_montagne.jpg'
+        ];
+
+        // Configuration des fichiers
+        const fileContents = {
+            'evangile_dimanche_1.txt': {
+                title: 'Évangile du 1er Dimanche de l\'Avent',
+                description: 'Texte et réflexion sur l\'attente du Seigneur',
+                content: `
+                    <h2>ÉVANGILE DU PREMIER DIMANCHE DE L'AVENT</h2>
+                    
+                    <h3>Lecture de l'Évangile selon saint Matthieu (24, 37-44)</h3>
+                    
+                    <div class="verse">
+                        En ce temps-là, Jésus disait à ses disciples :<br><br>
+                        « Comme il en fut aux jours de Noé, ainsi en sera-t-il lors de la venue du Fils de l'homme.
+                        En ces jours-là, avant le déluge, on mangeait et on buvait, on prenait femme et on prenait mari, jusqu'au jour où Noé entra dans l'arche ; les gens ne se sont doutés de rien, jusqu'à ce que survienne le déluge qui les a tous engloutis : ainsi en sera-t-il lors de la venue du Fils de l'homme.<br><br>
+                        
+                        Alors deux hommes seront aux champs : l'un sera pris, l'autre laissé. Deux femmes seront au moulin en train de moudre : l'une sera prise, l'autre laissée.<br><br>
+                        
+                        Veillez donc, car vous ne savez pas quel jour votre Seigneur vient. Comprenez-le bien : si le maître de maison avait su à quelle heure de la nuit le voleur viendrait, il aurait veillé et n'aurait pas laissé percer le mur de sa maison.<br><br>
+                        
+                        Tenez-vous donc prêts, vous aussi : c'est à l'heure où vous n'y penserez pas que le Fils de l'homme viendra. »
+                    </div>
+                    
+                    <div class="reflection">
+                        <h3>RÉFLEXION</h3>
+                        
+                        <p>L'Avent nous invite à la vigilance et à l'attente. Dans ce passage, Jésus nous rappelle que sa venue peut survenir à tout moment. Cette attente n'est pas passive, mais active : elle nous appelle à vivre chaque jour dans la préparation de nos cœurs.</p>
+                        
+                        <p>La vigilance chrétienne n'est pas de l'anxiété, mais une disposition intérieure qui nous maintient dans l'espérance. Comme les vierges sages de la parabole, nous devons garder nos lampes allumées, c'est-à-dire cultiver notre foi, notre charité et notre espérance.</p>
+                        
+                        <p>En ce temps de l'Avent, préparons-nous à accueillir le Christ qui vient. Il vient dans notre histoire personnelle, dans nos joies et nos peines, dans nos rencontres quotidiennes. Soyons attentifs à sa présence discrète mais réelle.</p>
+                        
+                        <p>Que cette période nous aide à purifier nos cœurs et à nous tourner vers l'essentiel : l'amour de Dieu et du prochain.</p>
+                        
+                        <p style="text-align: center; font-weight: bold; margin-top: 2rem;">Amen.</p>
+                    </div>
+                `
+            },
+            'homelie_noel_2024.txt': {
+                title: 'Homélie de Noël 2024',
+                description: 'Méditation sur la naissance du Christ',
+                content: `
+                    <h2>HOMÉLIE DE NOËL 2024</h2>
+                    
+                    <div class="verse">
+                        "Et le Verbe s'est fait chair, il a habité parmi nous"
+                    </div>
+                    
+                    <p>Chers frères et sœurs,</p>
+                    
+                    <p>En cette nuit sainte, nous célébrons le mystère de l'Incarnation. Dieu se fait homme, l'Éternel entre dans le temps, l'Infini se fait petit enfant. Quel bouleversement ! Quelle révolution dans l'histoire de l'humanité !</p>
+                    
+                    <div class="reflection">
+                        <h3>LA CRÈCHE, ÉCOLE DE SIMPLICITÉ</h3>
+                        
+                        <p>Regardons la crèche : une étable, de la paille, des bergers, des animaux. Rien de grandiose selon les critères du monde. Pourtant, c'est là que Dieu choisit de naître. Il nous enseigne ainsi que la vraie grandeur ne se trouve pas dans l'éclat extérieur, mais dans l'humilité et l'amour.</p>
+                        
+                        <p>Marie et Joseph nous montrent l'accueil confiant à la volonté de Dieu. Malgré les difficultés, ils disent "oui" au projet divin. Leur foi nous inspire : sachons nous aussi faire confiance à Dieu, même quand nous ne comprenons pas tout.</p>
+                    </div>
+                    
+                    <div class="reflection">
+                        <h3>L'ENFANT JÉSUS, LUMIÈRE DU MONDE</h3>
+                        
+                        <p>Jésus naît dans la nuit, mais il est la Lumière qui éclaire toute l'humanité. Cette lumière brille encore aujourd'hui pour chacun de nous. Elle éclaire nos doutes, nos peurs, nos souffrances. Elle nous révèle que nous sommes aimés de Dieu d'un amour infini.</p>
+                        
+                        <p>En cette période parfois difficile pour notre monde, où les conflits et les divisions semblent l'emporter, la naissance de Jésus nous rappelle que l'amour est plus fort que la haine, que la paix est possible, que l'espérance n'est jamais vaine.</p>
+                    </div>
+                    
+                    <div class="reflection">
+                        <h3>DEVENIR TÉMOINS DE LA JOIE</h3>
+                        
+                        <p>Comme les bergers qui ont couru annoncer la Bonne Nouvelle, nous sommes appelés à être des témoins de la joie de Noël. Cette joie ne vient pas des cadeaux ou des festivités, aussi belles soient-elles, mais de la certitude que Dieu nous aime et qu'il est avec nous.</p>
+                        
+                        <p>Portons cette joie autour de nous : dans nos familles, auprès de ceux qui souffrent, vers ceux qui se sentent seuls. Soyons des "porteurs de lumière" dans notre monde.</p>
+                    </div>
+                    
+                    <div class="verse">
+                        <h3>PRIÈRE</h3>
+                        
+                        <p>Seigneur Jésus, toi qui as voulu naître dans la simplicité d'une crèche, viens naître aussi dans nos cœurs. Aide-nous à t'accueillir avec la foi de Marie, la générosité de Joseph, la joie des bergers.</p>
+                        
+                        <p>Que ta paix règne dans nos familles, dans notre paroisse, dans notre monde. Que ta lumière guide nos pas sur le chemin de la vie.</p>
+                        
+                        <p style="text-align: center; font-weight: bold; margin-top: 2rem;">Joyeux Noël à tous !</p>
+                        
+                        <p style="text-align: right; margin-top: 2rem; font-style: italic;">
+                            Père Jean-Marie Dubois<br>
+                            Paroisse St Laurent - La Bresse
+                        </p>
+                    </div>
+                `
+            }
+        };
+
+        // Fonction pour afficher une image spirituelle aléatoire
+        function displayRandomSpiritualImage() {
+            const imageElement = document.getElementById('spiritualImage');
+            const randomIndex = Math.floor(Math.random() * spiritualImages.length);
+            const imageSrc = spiritualImages[randomIndex];
+            
+            imageElement.style.opacity = '0';
+            setTimeout(() => {
+                imageElement.src = imageSrc;
+                imageElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Fonction pour charger le contenu du fichier
+        function loadFileContent() {
+            // Récupérer le paramètre de fichier depuis l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const filename = urlParams.get('file');
+            
+            if (filename && fileContents[filename]) {
+                const file = fileContents[filename];
+                
+                // Mettre à jour le titre et la description
+                document.getElementById('documentTitle').textContent = file.title;
+                document.getElementById('documentDescription').textContent = file.description;
+                document.title = file.title + ' - Paroisse St Laurent';
+                
+                // Mettre à jour le contenu
+                document.getElementById('readingContent').innerHTML = file.content;
+                
+                // Afficher une image spirituelle aléatoire
+                displayRandomSpiritualImage();
+                
+                // Changer l'image toutes les 45 secondes
+                setInterval(displayRandomSpiritualImage, 45000);
+                
+            } else {
+                // Fichier non trouvé
+                document.getElementById('documentTitle').textContent = 'Fichier non trouvé';
+                document.getElementById('documentDescription').textContent = 'Le fichier demandé n\'existe pas';
+                document.getElementById('readingContent').innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">❌</div>
+                        <h2>Fichier non trouvé</h2>
+                        <p>Le fichier demandé n'existe pas ou n'est plus disponible.</p>
+                        <p><a href="evangiles.html" class="btn">Retour à la liste</a></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Charger le contenu au chargement de la page
+        document.addEventListener('DOMContentLoaded', loadFileContent);
+    </script>
+</body>
+</html>
+

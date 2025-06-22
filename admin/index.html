@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Paroisse St Laurent</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../images/croix_chretienne.jpg" type="image/jpeg">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/croix_chretienne.jpg" alt="Croix chrétienne">
+                <h1>Administration</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../evangiles.html">Évangiles & Homélies</a></li>
+                    <li><a href="index.html" class="active">Administration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Écran de connexion -->
+        <div id="loginScreen" class="card text-center">
+            <h2>Accès Administration</h2>
+            <p>Veuillez saisir le code administrateur pour accéder aux fonctionnalités de gestion.</p>
+            
+            <form id="loginForm" style="max-width: 300px; margin: 2rem auto;">
+                <div class="form-group">
+                    <label for="adminCode">Code Administrateur :</label>
+                    <input type="password" id="adminCode" name="adminCode" required 
+                           placeholder="Saisissez le code" maxlength="10">
+                </div>
+                <button type="submit" class="btn">Se connecter</button>
+            </form>
+            
+            <div id="loginError" class="hidden" style="color: #DC3545; margin-top: 1rem;">
+                Code incorrect. Veuillez réessayer.
+            </div>
+        </div>
+
+        <!-- Panel d'administration (caché par défaut) -->
+        <div id="adminPanel" class="hidden">
+            <div class="admin-panel">
+                <div class="admin-header">
+                    <h2>Panel d'Administration</h2>
+                    <button onclick="logout()" class="btn btn-danger">Déconnexion</button>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <!-- Gestion des fichiers -->
+                    <div class="card">
+                        <h3>📁 Gestion des Fichiers</h3>
+                        <p>Ajouter de nouveaux évangiles et homélies</p>
+                        
+                        <div class="form-group">
+                            <label for="fileTitle">Titre du fichier :</label>
+                            <input type="text" id="fileTitle" placeholder="Ex: Évangile du 2ème Dimanche">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fileDescription">Description :</label>
+                            <input type="text" id="fileDescription" placeholder="Courte description">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fileUpload">Fichier (PDF ou TXT) :</label>
+                            <input type="file" id="fileUpload" accept=".pdf,.txt">
+                        </div>
+                        
+                        <button onclick="uploadFile()" class="btn">Ajouter le fichier</button>
+                        <button onclick="showFileList()" class="btn btn-management" style="margin-left: 1rem;">
+                            Gérer les fichiers
+                        </button>
+                    </div>
+
+                    <!-- Gestion des images -->
+                    <div class="card">
+                        <h3>🖼️ Gestion des Images</h3>
+                        <p>Ajouter de nouvelles images spirituelles</p>
+                        
+                        <div class="form-group">
+                            <label for="imageUpload">Image :</label>
+                            <input type="file" id="imageUpload" accept=".jpg,.jpeg,.png,.gif">
+                        </div>
+                        
+                        <button onclick="uploadImage()" class="btn">Ajouter l'image</button>
+                        
+                        <div style="margin-top: 1rem;">
+                            <small>Images actuelles : <span id="imageCount">3</span></small>
+                            <button onclick="showImageList()" class="btn btn-management" style="margin-left: 1rem;">
+                                Gérer les images
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Gestion des pages -->
+                    <div class="card">
+                        <h3>📄 Gestion des Pages</h3>
+                        <p>Ajouter de nouvelles pages au site</p>
+                        
+                        <div class="form-group">
+                            <label for="pageTitle">Titre de la page :</label>
+                            <input type="text" id="pageTitle" placeholder="Ex: Activités Paroissiales">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pageContent">Contenu de la page :</label>
+                            <textarea id="pageContent" rows="5" 
+                                    placeholder="Contenu HTML de la nouvelle page..."></textarea>
+                        </div>
+                        
+                        <button onclick="createPage()" class="btn">Créer la page</button>
+                        <button onclick="showPageList()" class="btn btn-management" style="margin-left: 1rem;">
+                            Gérer les pages
+                        </button>
+                    </div>
+
+                    <!-- Paramètres -->
+                    <div class="card">
+                        <h3>⚙️ Paramètres</h3>
+                        <p>Modifier les paramètres du site</p>
+                        
+                        <div class="form-group">
+                            <label for="newAdminCode">Nouveau code administrateur :</label>
+                            <input type="password" id="newAdminCode" placeholder="Nouveau code">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmAdminCode">Confirmer le code :</label>
+                            <input type="password" id="confirmAdminCode" placeholder="Confirmer">
+                        </div>
+                        
+                        <button onclick="changeAdminCode()" class="btn btn-secondary">
+                            Changer le code
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liste des fichiers existants -->
+            <div class="card">
+                <h3>📋 Fichiers Existants</h3>
+                <div id="existingFiles" class="file-list">
+                    <div class="file-item">
+                        <div class="file-info">
+                            <div class="file-icon">📖</div>
+                            <div>
+                                <h4>Évangile du 1er Dimanche de l'Avent</h4>
+                                <p>evangile_dimanche_1.txt</p>
+                                <small>Ajouté le 1er décembre 2024</small>
+                            </div>
+                        </div>
+                        <div class="flex gap-1">
+                            <button class="btn-edit" onclick="editFile('evangile_dimanche_1.txt')">
+                                Modifier
+                            </button>
+                            <button class="btn-delete" onclick="deleteFile('evangile_dimanche_1.txt')">
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-item">
+                        <div class="file-info">
+                            <div class="file-icon">✨</div>
+                            <div>
+                                <h4>Homélie de Noël 2024</h4>
+                                <p>homelie_noel_2024.txt</p>
+                                <small>Ajouté le 25 décembre 2024</small>
+                            </div>
+                        </div>
+                        <div class="flex gap-1">
+                            <button class="btn-edit" onclick="editFile('homelie_noel_2024.txt')">
+                                Modifier
+                            </button>
+                            <button class="btn-delete" onclick="deleteFile('homelie_noel_2024.txt')">
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Paroisse St Laurent - La Bresse. Tous droits réservés.</p>
+        <p>Panel d'administration sécurisé</p>
+    </footer>
+
+    <!-- Modal pour les messages -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMessageModal()">&times;</span>
+            <div id="modalMessage"></div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
+
+
+    <!-- Modal pour la gestion des images -->
+    <div id="imageManagementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeImageManagementModal()">&times;</span>
+            <h2>Gestion des Images Spirituelles</h2>
+            <div id="imageList">
+                <!-- Liste des images sera générée par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour la gestion des pages -->
+    <div id="pageManagementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePageManagementModal()">&times;</span>
+            <h2>Gestion des Pages</h2>
+            <div id="pageList">
+                <!-- Liste des pages sera générée par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation de suppression -->
+    <div id="confirmDeleteModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirmer la suppression</h2>
+            <p id="deleteConfirmMessage">Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button onclick="confirmDelete()" class="btn btn-danger">Oui, supprimer</button>
+                <button onclick="closeConfirmDeleteModal()" class="btn btn-secondary" style="margin-left: 1rem;">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal pour la gestion des fichiers -->
+    <div id="fileManagementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFileManagementModal()">&times;</span>
+            <h2>Gestion des Fichiers</h2>
+            <div id="fileManagementList">
+                <!-- Liste des fichiers sera générée par JavaScript -->
+            </div>
+        </div>
+    </div>
+
